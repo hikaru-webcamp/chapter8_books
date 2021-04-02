@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<html><head>
+    <link rel="stylesheet" media="all" href="/assets/application-d12397cbc3a266ce5a99f7b588223090c55ca04a439953bb5f9304395de93fc3.css" data-turbolinks-track="reload">
+    <script src="/assets/application-4e370d3723b6f204426a9414077d365ea07814cce5619ae24fb7e581988f19ed.js" data-turbolinks-track="reload"></script>
+  <title>WebCampBackendNew</title><meta name="csrf-param" content="authenticity_token"><meta name="csrf-token" content="WMjAsVtnfmTRRVvgCJ+2sytXX1dfeDbxHzeT0gmWu+73TF0jPLTVON7h6Pu1B54YsFi8xYE7UyOlGVQx4fIq/g=="></head>
+
+ <body>
+  <h1>Editing Book</h1>
+    <%= form_with model:@book, local: true do |f| %>
+
+    <% if @book.errors.any? %>
+     <div id="error_explanation">
+      <h2><%= pluralize(@book.errors.count, "error") %> prohibited this product from being saved:</h2>
+        <ul>
+            <% @book.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+        </ul>
+      </div>
+  <% end %>
+
+<div class="field">
+  　<% if @book.errors.any? %>
+     <div class="field_with_errors">
+       <label for="book_title"><%= f.label :Title%></label>
+     </div>
+      <%= f.text_field :title %>
+     <div class="field_with_errors">
+       <label for="book_body"><%= f.label :body%></label>
+     </div>
+      <%= f.text_area :body %>
+
+    <%else%>
+     <label for="book_title"><%= f.label :Title%></label>
+     <%= f.text_field :title %>
+     <label for="book_body"><%= f.label :body%></label>
+      <%= f.text_area :body %>
+    <% end %>
+</div>
+
+   <div class="actions">
+     <%= f.submit 'Update Book' %>
+   </div>
+
+<% end %>
+
+ <span>
+ 　<%= link_to "Show",book_path(@book.id) %>
+ |
+   <a href="/books">Back</a>
+  </span>
+
+</body></html>
